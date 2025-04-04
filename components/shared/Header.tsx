@@ -42,9 +42,9 @@ export default function Header() {
         <NavLinks className='hidden lg:flex gap-[34px] '/>
         <div className='flex items-center gap-4 ml-auto'>
           <div className='relative'>
-            <div className='absolute h-4 w-4 text-xs bg-brown rounded-full text-white flex items-center justify-center -top-2 -right-2'>
+            {quantity && <div className='absolute h-4 w-4 text-xs bg-brown rounded-full text-white flex items-center justify-center -top-2 -right-2'>
               {quantity}
-            </div>
+            </div>}
             <Link href={"/cart"}>            
               <ShoppingCartIcon className='stroke-white hover:stroke-brown'/>
             </Link>
