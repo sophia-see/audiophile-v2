@@ -7,7 +7,7 @@ export default function BackButton() {
 
   return (
     <div 
-      className='cursor-pointer opacity-50 text-black font-medium text-[15px] leading-[25px] hover:opacity-100 hover:text-brown transition duration-100'
+      className='w-fit cursor-pointer opacity-50 text-black font-medium text-[15px] leading-[25px] hover:opacity-100 hover:text-brown transition duration-100'
       onClick={() => router.back()}
     >
       Go Back
