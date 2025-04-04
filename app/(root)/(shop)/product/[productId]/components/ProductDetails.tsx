@@ -33,6 +33,7 @@ export default function ProductDetails({ id, initialData }: ProductDetailsProps)
   return (
     <>
       <MainDetails 
+        id={formattedProduct.id}
         isNew={formattedProduct.isNew}
         title={formattedProduct.title}
         description={formattedProduct.description}
