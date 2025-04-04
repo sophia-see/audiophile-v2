@@ -72,7 +72,6 @@ export default function Header() {
         <AnimatePresence>
           {isMenuOpen && (
             <>
-              
               <motion.div
                 className="absolute top-full left-0 right-0 origin-top z-50 backdrop-brightness-10"
                 initial={{ opacity: 0, scaleY: 0 }}

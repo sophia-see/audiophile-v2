@@ -11,17 +11,17 @@ const CATEGORIES = [
   {
     name: "Headphones",
     image: "/assets/shared/desktop/image-category-thumbnail-headphones.png",
-    path: "/headphones"
+    path: "/category/headphones"
   },
   {
     name: "Speakers",
     image: "/assets/shared/desktop/image-category-thumbnail-speakers.png",
-    path: "/speakers"
+    path: "/category/speakers"
   },
   {
     name: "Earphones",
     image: "/assets/shared/desktop/image-category-thumbnail-earphones.png",
-    path: "/earphones"
+    path: "/category/earphones"
   },
 ]
 
@@ -45,7 +45,9 @@ export default function Categories({className}: CategoriesProps) {
             pt-[52px]
             group
           `}
-          onClick={() => redirect(path)}
+          onClick={() => {
+            redirect(path)
+          }}
           whileHover="hover"
         >
           <div className='absolute top-0 left-1/2 -translate-x-1/2'>
@@ -69,7 +71,7 @@ export default function Categories({className}: CategoriesProps) {
           <div className='bg-gray rounded-[8px] flex flex-col items-center pb-[22px]'>
             <div className="mt-[88px] flex flex-col">
               <div className="font-bold text-[15px] tracking-[1.07px] uppercase text-center">{name}</div>
-              <Button variant="ghost" icon={ChevronRight} className=''>Shop</Button>
+              <Button variant="ghost" icon={ChevronRight} className='group-hover:text-brown'>Shop</Button>
             </div>
           </div>
         </motion.div>

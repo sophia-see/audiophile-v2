@@ -3,9 +3,9 @@ import React from 'react'
 
 const LINKS = [
   { name: 'Home', href: '/' },
-  { name: 'Headphones', href: '/headphones' },
-  { name: 'Speakers', href: '/speakers' },
-  { name: 'Earphones', href: '/earphones' },
+  { name: 'Headphones', href: '/category/headphones' },
+  { name: 'Speakers', href: '/category/speakers' },
+  { name: 'Earphones', href: '/category/earphones' },
 ]
 
 interface NavLinksProps {

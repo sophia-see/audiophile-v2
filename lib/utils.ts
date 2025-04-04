@@ -49,3 +49,11 @@ export const toProductData = (data: ProductDBType | null) => {
     price: data?.price,
   }
 }
+
+export const toTitleCase = (str: string): string => {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}

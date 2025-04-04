@@ -1,5 +1,4 @@
 import Hero from "./components/Hero";
-import BackdropBlur from "@/components/shared/BackdropBlur";
 import { fetchHomePageProductById } from "@/lib/api";
 import { toProductData } from "@/lib/utils";
 import dynamic from "next/dynamic";
@@ -29,11 +28,10 @@ export default async function Home() {
   ) ?? [];
 
   return (
-    <main className="relative">
-      <BackdropBlur />
+    <div className="relative">
       <Hero product={formattedHeroProduct}/>
       <Categories className="pb-0 md:pb-0 lg:pb-0 md:mx-[40px] lg:mx-lg-custom"/>
       <Products products={featuredProducts}/>
-    </main>
+    </div>
   )
 }

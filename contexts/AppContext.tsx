@@ -8,21 +8,7 @@ interface AppContextProps {
   setIsMenuOpen: (prev: boolean) => void;
 }
 
-const AppContext = createContext<AppContextProps | null>(null);
-
-interface AppContextProviderProps {
-  children: React.ReactNode;
-}
-
-export function AppProvider({ children }: AppContextProviderProps) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  return (
-    <AppContext.Provider value={{ isMenuOpen, setIsMenuOpen }}>
-      {children}
-    </AppContext.Provider>
-  );
-}
+export const AppContext = createContext<AppContextProps | null>(null);
 
 export function useAppContext() {
   const context = React.useContext(AppContext);

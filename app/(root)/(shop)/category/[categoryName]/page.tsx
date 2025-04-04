@@ -4,20 +4,32 @@ import dynamic from 'next/dynamic';
 import { CategoryType } from '@/lib/api';
 import CategoryProducts from '@/components/CategoryProducts';
 import ProductsSkeleton from '@/components/Products/ProductsSkeleton';
+import { toTitleCase } from '@/lib/utils';
+import NotFound from '@/app/not-found';
 
 const Categories = dynamic(() => import('@/components/Categories'), {
   loading: () => <div>Loading categories...</div>,
 });
 
-export default async function HeadphonesPage() {
+interface CategoryPageProps {
+  params: Promise<{ categoryName: string }>;
+}
+
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const categoryName = (await params).categoryName.toLowerCase();
+
+  if (!Object.values(CategoryType).includes(categoryName as CategoryType)) {
+    return <NotFound />
+  }
+
   return (
-    <div>
+    <div className='relative'>
       <div className='py-[32px] flex justify-center bg-black text-white md:py-[105px] lg:py-[98px]'>
-        <Title text="Headphones" />
+        <Title text={toTitleCase(categoryName)} />
       </div>
 
       <Suspense fallback={<ProductsSkeleton />}>
-        <CategoryProducts category={CategoryType.headphones}/>
+        <CategoryProducts category={categoryName as CategoryType}/>
       </Suspense>
 
       <Categories className='pt-[120px] pb-[120px] md:mx-[40px] lg:pt-[160px] lg:pb-[160px] lg:mx-lg-custom'/>
