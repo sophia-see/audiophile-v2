@@ -1,20 +1,31 @@
+import prisma from "./prisma";
+
 export enum CategoryType {
   headphones = "headphones",
   speakers = "speakers",
-  earphones = "earphones"
-
+  earphones = "earphones",
 }
 
 export const fetchProducts = async (type: CategoryType) => {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?fields[0]=id&fields[1]=title&fields[2]=image&fields[3]=description&fields[4]=isNew&filters[category][$eq]=${type}&sort=updatedAt:desc&sort=createdAt:desc`
-    const res = await fetch(url, {
-      // next: { revalidate: 60 }, // Cache for 1 min
+    const products = await prisma.product.findMany({
+      where: {
+        category: type, // Filter by category
+      },
+      select: {
+        id: true,
+        title: true,
+        images: true,
+        description: true,
+        isNew: true,
+      },
+      orderBy: [
+        { updatedAt: 'desc' }, // Sort by updatedAt in descending order
+        { createdAt: 'desc' }, // Sort by createdAt in descending order
+      ],
     });
-    if (!res.ok) throw new Error("Failed to fetch products");
 
-    const data = await res.json();
-    return data.data;
+    return products as ProductDBType[];
   } catch (error) {
     console.log(error);
     return null;
@@ -23,53 +34,90 @@ export const fetchProducts = async (type: CategoryType) => {
 
 export const fetchHomePageProductById = async (id: number) => {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products??fields[0]=id&fields[1]=title&fields[2]=image&fields[3]=featuredDesc&fields[4]=isNew&filters[id][$eq]=${id}`
-    const res = await fetch(url, {
-      next: { revalidate: 60 * 60 }, // Cache for 1 hour
+    const product = await prisma.product.findUnique({
+      where: {
+        id: id, // Fetch by ID
+      },
+      select: {
+        id: true,
+        title: true,
+        images: true,
+        featuredDesc: true,
+        isNew: true,
+      },
     });
-    if (!res.ok) throw new Error("Failed to fetch products");
 
-    const data = await res.json();
-    return data;
-  } catch (error) {
+    return product as ProductDBType;
+} catch (error) {
     console.log(error);
     return null;
   }
 };
-
 
 export const fetchProductById = async (id: number) => {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?populate=*&filters[id][$eq]=${id}`
-    const res = await fetch(url, {
-      // next: { revalidate: 60 }, // Cache for 1 min
+    const product = await prisma.product.findUnique({
+      where: {
+        id: id, // Fetch by ID
+      },
+      include: {
+        images: true, // Include related images
+        inclusions: true, // Include related inclusions
+      },
     });
-    if (!res.ok) throw new Error("Failed to fetch products");
 
-    const data = await res.json();
-    return data.data;
+    return product as ProductDBType;
   } catch (error) {
     console.log(error);
     return null;
   }
 };
 
-// get only image, title, and id
+// Get only image, title, and id, excluding a specific product
 export const fetchRandomProductsExceptId = async (id: number) => {
   try {
-    
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?fields[0]=id&fields[1]=title&fields[2]=image&filters[id][$ne]=${id}&pagination[limit]=10`;
-    const res = await fetch(url, {
-      // next: { revalidate: 60 }, // Cache for 1 min
+    const products = await prisma.product.findMany({
+      where: {
+        id: {
+          not: id, // Exclude the product with the specified ID
+        },
+      },
+      select: {
+        id: true,
+        title: true,
+        images: true,
+      },
+      take: 10, // Limit the result to 10 products
     });
-    if (!res.ok) throw new Error("Failed to fetch products");
 
-    const data = await res.json();
     // Shuffle and pick 3 random products
-    const shuffled = data.data.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 3); // Return 3 random products
   } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
+
+export const fetchAllProducts = async () => {
+  try {
+    const products = await prisma.product.findMany({
+      select: {
+        id: true,
+        title: true,
+        images: true,
+        description: true,
+        isNew: true,
+        category: true,
+        price: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+
+    return products;
+  } catch (error) {
+    console.error("Error fetching all products:", error);
+    return null;
+  }
+};

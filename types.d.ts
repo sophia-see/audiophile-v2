@@ -48,13 +48,18 @@ interface ProductImageType {
 
 interface ProductType {
   id: number;
-  title: string;
-  category: string;
-  description: string;
-  features: string;
-  featuredDesc?: string;
-  isNew?: boolean;
-  inclusions: InclusionType[];
-  image: ProductImageType;
-  price: number;
+  title?: string | null | undefined;
+  category?:  string | null | undefined;
+  description?:  string | null | undefined;
+  features?:  string | null | undefined;
+  featuredDesc?:  string | null | undefined;
+  isNew?: boolean | undefined | null;
+  inclusions?: InclusionType[] | undefined | null;
+  image?: ProductImageType | undefined | null;
+  price?: number | undefined | null;
+}
+
+type ProductDBType = Product & {
+  images?: ImageSet[];
+  inclusions?: Inclusion[];
 }

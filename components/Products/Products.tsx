@@ -29,10 +29,10 @@ export default function Products({categoryType, items: initialData}: ProductsPro
         <ItemCard 
           key={item.title} 
           id={item.id}
-          title={item.title} 
-          image={item.image} 
-          description={item.description} 
-          isNew={item.isNew}
+          title={item.title ?? ""} 
+          image={item.image as ProductImageType} 
+          description={item.description ?? ""} 
+          isNew={item.isNew ?? false}
           currSize={currSize}
           isImageFirst={index % 2 == 0}
         />

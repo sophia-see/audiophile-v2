@@ -20,3 +20,40 @@ model User {
   firstName  String
   lastName  String
 }
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  documentId  String   @unique
+  title       String
+  isNew       Boolean?
+  description String
+  features    String
+  category    String
+  price       Int
+  featuredDesc String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  publishedAt DateTime?
+
+  inclusions Inclusion[]
+  images     ImageSet[]
+}
+
+model Inclusion {
+  id        Int    @id @default(autoincrement())
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  name      String
+  quantity  Int
+}
+
+model ImageSet {
+  id        Int    @id @default(autoincrement())
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  type      String // "mobile", "tablet", or "desktop"
+  full      String
+  preview   String
+  gallery   String[]
+}
+

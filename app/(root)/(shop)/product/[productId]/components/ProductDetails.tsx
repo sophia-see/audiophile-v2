@@ -7,10 +7,11 @@ import OtherDetails from './OtherDetails';
 import { useProductById } from '@/hooks/useProducts';
 import NoDataFound from '@/components/error/NoDataFound';
 import ProductDetailsSkeleton from './skeletons/ProductDetailsSkeleton';
+import { toProductData } from '@/lib/utils';
 
 interface ProductDetailsProps {
   id: number; 
-  initialData: ProductType;
+  initialData: ProductDBType;
 }
 
 
@@ -20,28 +21,26 @@ const ProductGallery = dynamic(() => import("./ProductGallery"), {
 
 export default function ProductDetails({ id, initialData }: ProductDetailsProps) {
   const { data, isLoading } = useProductById(id, initialData);
-
+  const formattedProduct = toProductData(data);
   
   if (isLoading)
     return <ProductDetailsSkeleton />
   
-  if (!data || data.length == 0) {
+  if (!formattedProduct) {
     return <NoDataFound />;
   }
   
-  const product = data[0] as ProductType;
-
   return (
     <>
       <MainDetails 
-        isNew={product.isNew}
-        title={product.title}
-        description={product.description}
-        price={product.price}
-        image={product.image}
+        isNew={formattedProduct.isNew}
+        title={formattedProduct.title}
+        description={formattedProduct.description}
+        price={formattedProduct.price}
+        image={formattedProduct.image}
       />
-      <OtherDetails features={product.features} inclusions={product.inclusions} />
-      <ProductGallery image={product.image} />
+      <OtherDetails features={formattedProduct.features} inclusions={formattedProduct.inclusions} />
+      <ProductGallery image={formattedProduct.image} />
     </>
   );
 }

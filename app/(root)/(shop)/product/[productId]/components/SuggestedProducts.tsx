@@ -43,19 +43,24 @@ function ProductCard ({image, name, id}: ProductCardProps) {
 
 export default function SuggestedProducts({products}: SuggestedProductsProps) {
   const { currSize } = useDeviceSize();
-
+  
   return (
     <div className='pt-[120px] flex flex-col gap-10 lg:pt-[160px]'>
       <Title variant='subtitle' text="You may also like" className='text-center'/>
       <div className='grid grid-cols-1 gap-[56px] md:grid-cols-3 md:gap-[11px] lg:gap-[30px]'>
-        {products.map((product) => (
-          <ProductCard 
+        {products.map((product) => {
+          const image = product.image;
+          const imageSize = image ? image[currSize as keyof ProductImageType] : null;
+          
+          return (
+            <ProductCard 
             key={product.id}
-            image={product.image[currSize as keyof ProductImageType].preview}
-            name={product.title}
+            image={imageSize?.preview ?? ""}
+            name={product.title ?? ""}
             id={product.id}
-          />
-        ))}
+            />
+          )
+        })}
       </div>
     </div>
   )

@@ -16,13 +16,11 @@ export default async function Product({ params }: ProductProps) {
 
   const productRes = await fetchProductById(productId);
 
-  if (!productRes?.length) {
+  if (!productRes) {
     return <NoDataFound />
   }
 
-  const product = productRes as ProductType;
-
   return (
-    <ProductDetails id={productId} initialData={product} />
+    <ProductDetails id={productId} initialData={productRes} />
   );
 }

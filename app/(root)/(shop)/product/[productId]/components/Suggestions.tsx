@@ -1,6 +1,7 @@
 import { fetchRandomProductsExceptId } from '@/lib/api';
 import React from 'react'
 import SuggestedProducts from './SuggestedProducts';
+import { toProductData } from '@/lib/utils';
 
 interface SuggestionsProps {
   productId: number;
@@ -8,12 +9,13 @@ interface SuggestionsProps {
 
 export default async function Suggestions({productId}: SuggestionsProps) {
   const suggestedProducts = (await fetchRandomProductsExceptId(productId)) as ProductType[];
+  const formattedProducts = suggestedProducts.map((product) => toProductData(product) as ProductType);
 
-  if (!suggestedProducts || suggestedProducts?.length == 0) {
+  if (!formattedProducts || formattedProducts?.length == 0) {
     return;
   }
   
   return (
-    <SuggestedProducts products={suggestedProducts} />
+    <SuggestedProducts products={formattedProducts} />
   )
 }
