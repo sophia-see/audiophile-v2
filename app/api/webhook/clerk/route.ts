@@ -54,7 +54,7 @@ export async function POST(req: Request) {
         data: {
           clerkId: id,
           email: email_addresses[0]?.email_address || '',
-          firstName: `NEW ${first_name || ''}`,
+          firstName: `${first_name || ''}`,
           lastName: last_name || '',
         },
       });
