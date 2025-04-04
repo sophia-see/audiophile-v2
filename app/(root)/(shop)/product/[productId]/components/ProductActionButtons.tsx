@@ -3,7 +3,9 @@
 import Button from '@/components/shared/Button'
 import NumberPicker from '@/components/shared/NumberPicker'
 import useCartStore from '@/stores/useCartStore';
+import { CircleCheck, CircleX } from 'lucide-react';
 import React from 'react'
+import { toast } from 'sonner';
 
 interface ProductActionButtonsProps {
   id: string;
@@ -12,27 +14,46 @@ interface ProductActionButtonsProps {
 }
 
 export default function ProductActionButtons({id, title, price}: ProductActionButtonsProps) {
-  const { addItem } = useCartStore();
-  const [value, setValue] = React.useState(1);
+  const { items, addItem, removeItem } = useCartStore();
+  const [value, setValue] = React.useState<number | undefined | null>(1);
+
+  const cartItem = React.useMemo(() => {
+    return items.find((i) => i.id === id);
+  }, [items, id]);
+
+  React.useEffect(() => {
+    if (cartItem) setValue(cartItem.quantity);
+  }, [cartItem, setValue]);
 
   const handleAddToCart = React.useCallback(() => {
-    addItem({
-      id: id,
-      name: title,
-      price: price,
-      quantity: value
-    });
-    alert(`Added ${value}x ${title} to cart`);
-  }, [id, title, price, value, addItem]);
+    if (value && value > 0) {
+      addItem({
+        id: id,
+        name: title,
+        price: price,
+        quantity: value
+      });
+      toast.success(`Added ${value}x ${title} to your cart`, {
+        icon: <CircleCheck className='text-brown' size={14}/>,
+      })
+    } else if (value == 0) {
+      removeItem(id);
+      toast.error(`Removed ${title} from your cart`, {
+        icon: <CircleX className='text-brown' size={14}/>,
+      })
+      setValue(1)
+    }
+  }, [id, title, price, value, addItem, removeItem]);
 
   return (
     <div className='flex items-center gap-4'>
-      <NumberPicker value={value} setValue={setValue} className='w-[120px]'/>
-      <Button 
+      <NumberPicker value={value} setValue={setValue} className='w-[120px]' min={cartItem ? 0 : 1}/>
+      <Button
         onClick={handleAddToCart}
-        className='w-[160px] justify-center'
+        className='min-w-[160px] w-fit justify-center disabled:opacity-70'
+        disabled={value === undefined || value === null || value < 0}
       >
-        Add to cart
+        {cartItem ? (value ? "Update cart" : value == 0 ? "Remove from cart" : "Update cart") : "Add to cart"}
       </Button>
     </div>
   )

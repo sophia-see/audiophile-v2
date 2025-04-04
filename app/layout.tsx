@@ -5,6 +5,7 @@ import { AppProvider } from "@/contexts/AppContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import QueryProvider from "@/providers/QueryProvider";
 import CartProvider from "@/providers/CartProvider";
+import { Toaster } from "sonner";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
             <CartProvider>
               <AppProvider>
                 {children}
+                <Toaster />
               </AppProvider>
             </CartProvider>
           </QueryProvider>

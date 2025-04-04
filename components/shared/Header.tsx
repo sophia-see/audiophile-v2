@@ -11,9 +11,11 @@ import NavLinks from './NavLinks'
 import { SignedIn, SignedOut } from '@clerk/nextjs'
 import Link from 'next/link'
 import CustomUserButton from './CustomUserButton'
+import useCartStore from '@/stores/useCartStore'
 
 
 export default function Header() {
+  const { quantity } = useCartStore();
   const { isMenuOpen, setIsMenuOpen } = useAppContext();
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -39,9 +41,14 @@ export default function Header() {
         <Logo />
         <NavLinks className='hidden lg:flex gap-[34px] '/>
         <div className='flex items-center gap-4 ml-auto'>
-          <Link href={"/cart"}>            
-            <ShoppingCartIcon className='stroke-white hover:stroke-brown'/>
-          </Link>  
+          <div className='relative'>
+            <div className='absolute h-4 w-4 text-xs bg-brown rounded-full text-white flex items-center justify-center -top-2 -right-2'>
+              {quantity}
+            </div>
+            <Link href={"/cart"}>            
+              <ShoppingCartIcon className='stroke-white hover:stroke-brown'/>
+            </Link>
+          </div>
           <SignedIn>
               {/* <UserIcon className='stroke-white hover:stroke-brown'/> */}
               <CustomUserButton />

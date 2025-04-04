@@ -34,10 +34,10 @@ export default function Button(props: ButtonProps) {
         flex items-center gap-[13.32px]
         py-[15px] pl-[31.5px] pr-[29.5px]
         font-bold text-[13px] leading-auto tracking-[1px] uppercase
-        ${isDefault ? "bg-brown text-white border-none hover:bg-light-brown" : ""}
-        ${isBlack ? "bg-black text-white border-none hover:bg-light-black" : ""}
-        ${isOutline ? "bg-transparent text-black border border-black hover:bg-black hover:text-white" : ""}
-        ${isGhost ? "bg-transparent text-black/50 border-none hover:text-brown" : ""}
+        ${isDefault ? "bg-brown text-white border-none enabled:hover:bg-light-brown" : ""}
+        ${isBlack ? "bg-black text-white border-none enabled:hover:bg-light-black" : ""}
+        ${isOutline ? "bg-transparent text-black border border-black enabled:hover:bg-black enabled:hover:text-white" : ""}
+        ${isGhost ? "bg-transparent text-black/50 border-none enabled:hover:text-brown" : ""}
         ${className || ""}  
       `}
       {...rest}
