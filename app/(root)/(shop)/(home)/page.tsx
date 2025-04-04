@@ -23,8 +23,6 @@ export default async function Home() {
   const heroProduct = (await fetchHomePageProductById(HERO_PRODUCT_ID));
   const formattedHeroProduct = toProductData(heroProduct);
 
-  console.log(formattedHeroProduct)
-
   const featuredProducts = await Promise.all(
     FEATURED_PRODUCTS_ID.map(async (id) => 
       (await fetchHomePageProductById(id)))
@@ -33,7 +31,7 @@ export default async function Home() {
   return (
     <main className="relative">
       <BackdropBlur />
-      <Hero product={toProductData(heroProduct)}/>
+      <Hero product={formattedHeroProduct}/>
       <Categories className="pb-0 md:pb-0 lg:pb-0 md:mx-[40px] lg:mx-lg-custom"/>
       <Products products={featuredProducts}/>
     </main>

@@ -9,8 +9,6 @@ interface OtherDetailsProps {
 }
 
 export default function OtherDetails({features, inclusions}: OtherDetailsProps) {
-
-  console.log({ feature: features.split("\n"), inclusions })
   return (
     <div className='grid grid-cols-1 py-[88px] gap-[88px] lg:grid-cols-[1fr_350px]'>
       <div className='flex flex-col gap-6'>
