@@ -6,7 +6,6 @@ import useDeviceSize from '@/hooks/use-device-size';
 import { toProductUrl } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
 
 interface SuggestedProductsProps {
   products: ProductType[];

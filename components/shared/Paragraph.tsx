@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface ParagraphProps {
   text: string;
   className?: string;

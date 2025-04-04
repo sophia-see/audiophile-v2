@@ -1,7 +1,6 @@
 "use client"
 
 import dynamic from 'next/dynamic';
-import React from 'react'
 import MainDetails from './MainDetails';
 import OtherDetails from './OtherDetails';
 import { useProductById } from '@/hooks/useProducts';

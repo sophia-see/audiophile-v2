@@ -1,7 +1,6 @@
 "use client"
 
 import useCartStore from '@/stores/useCartStore';
-import React from 'react'
 
 export default function Cart() {
   const { items, total } = useCartStore();

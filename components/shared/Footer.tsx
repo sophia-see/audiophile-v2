@@ -3,7 +3,6 @@
 import useDeviceSize from '@/hooks/use-device-size';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation'
-import React from 'react'
 import Title from './Title';
 import Paragraph from './Paragraph';
 import Logo from './Logo';

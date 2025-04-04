@@ -1,7 +1,6 @@
 "use client"
 
 import { MenuIcon, ShoppingCartIcon, UserIcon } from 'lucide-react'
-import React from 'react'
 import Logo from './Logo'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from "framer-motion";

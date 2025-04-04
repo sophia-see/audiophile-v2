@@ -4,7 +4,7 @@ import Button from '@/components/shared/Button'
 import NumberPicker from '@/components/shared/NumberPicker'
 import useCartStore from '@/stores/useCartStore';
 import { CircleCheck, CircleX } from 'lucide-react';
-import React from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 
 interface ProductActionButtonsProps {
@@ -15,17 +15,17 @@ interface ProductActionButtonsProps {
 
 export default function ProductActionButtons({id, title, price}: ProductActionButtonsProps) {
   const { items, addItem, removeItem } = useCartStore();
-  const [value, setValue] = React.useState<number | undefined | null>(1);
+  const [value, setValue] = useState<number | undefined | null>(1);
 
-  const cartItem = React.useMemo(() => {
+  const cartItem = useMemo(() => {
     return items.find((i) => i.id === id);
   }, [items, id]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (cartItem) setValue(cartItem.quantity);
   }, [cartItem, setValue]);
 
-  const handleAddToCart = React.useCallback(() => {
+  const handleAddToCart = useCallback(() => {
     if (value && value > 0) {
       addItem({
         id: id,

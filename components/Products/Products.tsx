@@ -1,6 +1,5 @@
 "use client"
 
-import React from 'react'
 import useDeviceSize from '@/hooks/use-device-size';
 import ItemCard from './ItemCard';
 import { useProductsByCategory } from '@/hooks/useProducts';

@@ -3,7 +3,6 @@
 import NewProductBadge from '@/components/shared/NewProductBadge';
 import Paragraph from '@/components/shared/Paragraph';
 import Title from '@/components/shared/Title';
-import React from 'react'
 
 interface ProductDetailsProps {
   isNew?: boolean;

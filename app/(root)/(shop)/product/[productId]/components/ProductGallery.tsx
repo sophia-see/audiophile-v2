@@ -2,7 +2,6 @@
 
 import useDeviceSize from '@/hooks/use-device-size';
 import Image from 'next/image';
-import React from 'react'
 
 interface SmallImageProps {
   src: string;

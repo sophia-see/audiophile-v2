@@ -5,7 +5,6 @@ import Paragraph from '@/components/shared/Paragraph'
 import Title from '@/components/shared/Title'
 import useDeviceSize from '@/hooks/use-device-size'
 import Image from 'next/image'
-import React from 'react'
 import { motion } from "framer-motion"
 import { EARPHONES, SPEAKERS } from '@/lib/constants'
 import Link from 'next/link'

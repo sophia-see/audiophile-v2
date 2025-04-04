@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface NumberPickerProps {
   value: number | undefined | null;
   setValue: (value: number | undefined | null) => void;

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { ElementType } from 'react';
+import { ElementType } from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;

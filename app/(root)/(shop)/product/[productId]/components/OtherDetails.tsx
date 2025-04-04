@@ -1,7 +1,6 @@
 import Paragraph from '@/components/shared/Paragraph';
 import Title from '@/components/shared/Title'
 import { toParagraph } from '@/lib/utils';
-import React from 'react'
 
 interface OtherDetailsProps {
   features: string;

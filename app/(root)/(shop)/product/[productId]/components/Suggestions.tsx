@@ -1,5 +1,4 @@
 import { fetchRandomProductsExceptId } from '@/lib/api';
-import React from 'react'
 import SuggestedProducts from './SuggestedProducts';
 import { toProductData } from '@/lib/utils';
 

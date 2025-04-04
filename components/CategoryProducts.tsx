@@ -1,4 +1,3 @@
-import React from 'react'
 import Products from '@/components/Products/Products';
 import { CategoryType, fetchProducts } from '@/lib/api';
 import { toProductData } from '@/lib/utils';

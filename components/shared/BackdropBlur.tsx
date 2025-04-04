@@ -1,7 +1,6 @@
 "use client"
 
 import { useAppContext } from '@/contexts/AppContext';
-import React from 'react'
 
 export default function BackdropBlur() {
   const { isMenuOpen, setIsMenuOpen } = useAppContext();

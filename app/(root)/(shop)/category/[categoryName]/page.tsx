@@ -1,5 +1,5 @@
 import Title from '@/components/shared/Title'
-import React, { Suspense } from 'react'
+import{ Suspense } from 'react'
 import dynamic from 'next/dynamic';
 import { CategoryType } from '@/lib/api';
 import CategoryProducts from '@/components/CategoryProducts';

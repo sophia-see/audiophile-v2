@@ -8,7 +8,7 @@ import { HEADPHONES } from '@/lib/constants'
 import { toProductUrl } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 const FEATURED_PRODUCT = {
   id: HEADPHONES[0].id,
@@ -23,10 +23,10 @@ interface HeroProps {
 
 export default function Hero({product}: HeroProps) {
   const { currSize } = useDeviceSize();
-  const [showImage, setShowImage] = React.useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   // delay show image to avoid sudden shift of image size (let currsize finalize first)
-  React.useEffect(() => {
+  useEffect(() => {
     const timeout = setTimeout(() => setShowImage(true), 100);
     return () => clearTimeout(timeout);
   }, []);

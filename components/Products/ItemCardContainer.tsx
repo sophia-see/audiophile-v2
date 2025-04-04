@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import React from "react";
+import { useRef } from "react";
 
 interface ItemCardContainerProps {
   image: React.ReactNode;
@@ -10,7 +10,7 @@ interface ItemCardContainerProps {
 }
 
 export default function ItemCardContainer ({image, details, isImageFirst}: ItemCardContainerProps) {
-  const ref = React.useRef(null);
+  const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,

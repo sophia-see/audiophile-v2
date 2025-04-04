@@ -1,29 +1,11 @@
 "use client"
 
 import Image from 'next/image'
-import React from 'react'
 import Button from './shared/Button'
 import { ChevronRight } from 'lucide-react'
 import { motion } from "framer-motion";
 import { redirect } from 'next/navigation'
-
-const CATEGORIES = [
-  {
-    name: "Headphones",
-    image: "/assets/shared/desktop/image-category-thumbnail-headphones.png",
-    path: "/category/headphones"
-  },
-  {
-    name: "Speakers",
-    image: "/assets/shared/desktop/image-category-thumbnail-speakers.png",
-    path: "/category/speakers"
-  },
-  {
-    name: "Earphones",
-    image: "/assets/shared/desktop/image-category-thumbnail-earphones.png",
-    path: "/category/earphones"
-  },
-]
+import { CATEGORIES } from '@/lib/categories'
 
 interface CategoriesProps {
   className?: string;

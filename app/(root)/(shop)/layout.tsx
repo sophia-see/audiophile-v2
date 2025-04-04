@@ -1,7 +1,6 @@
 import BackdropBlur from '@/components/shared/BackdropBlur'
 import Header from '@/components/shared/Header'
 import dynamic from 'next/dynamic'
-import React from 'react'
 
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
   loading: () => <div>Loading...</div>,

@@ -2,17 +2,17 @@
 
 import { AppContext } from "@/contexts/AppContext";
 import { usePathname } from "next/navigation";
-import React from "react";
+import { useEffect, useState } from "react";
 
 interface AppContextProviderProps {
   children: React.ReactNode;
 }
 
 export function AppProvider({ children }: AppContextProviderProps) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname])
 

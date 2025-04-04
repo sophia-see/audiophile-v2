@@ -1,5 +1,4 @@
 import Header from '@/components/shared/Header'
-import React from 'react'
 
 export default function layout ({children}: {children: React.ReactNode}) {
   return (

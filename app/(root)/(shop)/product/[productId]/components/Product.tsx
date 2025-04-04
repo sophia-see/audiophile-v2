@@ -1,5 +1,4 @@
 import { fetchProductById } from '@/lib/api';
-import React from 'react'
 import ProductDetails from './ProductDetails';
 import NoDataFound from '@/components/error/NoDataFound';
 

@@ -1,5 +1,5 @@
 import BackButton from '@/components/shared/BackButton';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import Categories from '@/components/Categories';
 import ProductDetailsSkeleton from './components/skeletons/ProductDetailsSkeleton';
 import SuggestedProductsSkeleton from './components/skeletons/SuggestedProductsSkeleton';

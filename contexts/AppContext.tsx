@@ -1,7 +1,6 @@
 "use client"
 
-import React from "react";
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 interface AppContextProps {
   isMenuOpen: boolean;
@@ -11,7 +10,7 @@ interface AppContextProps {
 export const AppContext = createContext<AppContextProps | null>(null);
 
 export function useAppContext() {
-  const context = React.useContext(AppContext);
+  const context = useContext(AppContext);
   if (!context) {
     throw new Error("useAppContext must be used within AppProvider");
   }
