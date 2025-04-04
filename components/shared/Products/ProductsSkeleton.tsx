@@ -1,5 +1,5 @@
 import ItemCardContainer from './ItemCardContainer';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '../../ui/skeleton';
 
 export default function ProductsSkeleton() {
   

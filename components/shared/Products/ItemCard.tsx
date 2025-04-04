@@ -6,7 +6,7 @@ import Paragraph from '@/components/shared/Paragraph';
 import Title from '@/components/shared/Title';
 import Link from 'next/link';
 import { toProductUrl } from '@/lib/utils';
-import NewProductBadge from '../shared/NewProductBadge';
+import NewProductBadge from '../NewProductBadge';
 import ItemCardContainer from './ItemCardContainer';
 
 interface ItemCardProps {

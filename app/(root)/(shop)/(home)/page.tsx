@@ -10,7 +10,7 @@ const FEATURED_PRODUCTS_ID = [
   11
 ]
 
-const Categories = dynamic(() => import("@/components/Categories"), {
+const Categories = dynamic(() => import("@/components/shared/Categories"), {
   loading: () => <div>Loading...</div>
 })
 

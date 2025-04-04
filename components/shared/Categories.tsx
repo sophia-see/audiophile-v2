@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image'
-import Button from './shared/Button'
+import Button from './Button'
 import { ChevronRight } from 'lucide-react'
 import { motion } from "framer-motion";
 import { redirect } from 'next/navigation'

@@ -1,6 +1,6 @@
 import BackButton from '@/components/shared/BackButton';
 import { Suspense } from 'react';
-import Categories from '@/components/Categories';
+import Categories from '@/components/shared/Categories';
 import ProductDetailsSkeleton from './components/skeletons/ProductDetailsSkeleton';
 import SuggestedProductsSkeleton from './components/skeletons/SuggestedProductsSkeleton';
 import Suggestions from './components/Suggestions';

@@ -1,6 +1,6 @@
 import { fetchProductById } from '@/lib/api';
 import ProductDetails from './ProductDetails';
-import NoDataFound from '@/components/error/NoDataFound';
+import NoDataFound from '@/components/shared/NoDataFound';
 
 interface ProductProps {
   params: Promise<{ productId: string }>;

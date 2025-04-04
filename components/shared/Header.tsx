@@ -4,7 +4,7 @@ import { MenuIcon, ShoppingCartIcon, UserIcon } from 'lucide-react'
 import Logo from './Logo'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from "framer-motion";
-import Categories from '../Categories'
+import Categories from './Categories'
 import { useAppContext } from '@/contexts/AppContext'
 import NavLinks from './NavLinks'
 import { SignedIn, SignedOut } from '@clerk/nextjs'

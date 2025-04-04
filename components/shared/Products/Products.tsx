@@ -4,7 +4,7 @@ import useDeviceSize from '@/hooks/use-device-size';
 import ItemCard from './ItemCard';
 import { useProductsByCategory } from '@/hooks/useProducts';
 import { CategoryType } from '@/lib/api';
-import NoDataFound from '../error/NoDataFound';
+import NoDataFound from '../NoDataFound';
 import ProductsSkeleton from './ProductsSkeleton';
 
 interface ProductsProps {

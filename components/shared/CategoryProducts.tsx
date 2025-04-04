@@ -1,4 +1,4 @@
-import Products from '@/components/Products/Products';
+import Products from '@/components/shared/Products/Products';
 import { CategoryType, fetchProducts } from '@/lib/api';
 import { toProductData } from '@/lib/utils';
 

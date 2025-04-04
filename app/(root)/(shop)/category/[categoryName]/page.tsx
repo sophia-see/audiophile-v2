@@ -2,12 +2,12 @@ import Title from '@/components/shared/Title'
 import{ Suspense } from 'react'
 import dynamic from 'next/dynamic';
 import { CategoryType } from '@/lib/api';
-import CategoryProducts from '@/components/CategoryProducts';
-import ProductsSkeleton from '@/components/Products/ProductsSkeleton';
+import CategoryProducts from '@/components/shared/CategoryProducts';
+import ProductsSkeleton from '@/components/shared/Products/ProductsSkeleton';
 import { toTitleCase } from '@/lib/utils';
 import NotFound from '@/app/not-found';
 
-const Categories = dynamic(() => import('@/components/Categories'), {
+const Categories = dynamic(() => import('@/components/shared/Categories'), {
   loading: () => <div>Loading categories...</div>,
 });
 

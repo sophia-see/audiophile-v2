@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import MainDetails from './MainDetails';
 import OtherDetails from './OtherDetails';
 import { useProductById } from '@/hooks/useProducts';
-import NoDataFound from '@/components/error/NoDataFound';
+import NoDataFound from '@/components/shared/NoDataFound';
 import ProductDetailsSkeleton from './skeletons/ProductDetailsSkeleton';
 import { toProductData } from '@/lib/utils';
 
