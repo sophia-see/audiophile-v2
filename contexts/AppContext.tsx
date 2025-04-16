@@ -5,6 +5,8 @@ import { createContext, useContext } from "react";
 interface AppContextProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (prev: boolean) => void;
+  isCartOpen: boolean;
+  setIsCartOpen: (prev: boolean) => void;
 }
 
 export const AppContext = createContext<AppContextProps | null>(null);

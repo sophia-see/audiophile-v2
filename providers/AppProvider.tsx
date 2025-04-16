@@ -10,14 +10,16 @@ interface AppContextProviderProps {
 
 export function AppProvider({ children }: AppContextProviderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsCartOpen(false);
   }, [pathname])
 
   return (
-    <AppContext.Provider value={{ isMenuOpen, setIsMenuOpen }}>
+    <AppContext.Provider value={{ isMenuOpen, setIsMenuOpen, isCartOpen, setIsCartOpen }}>
       {children}
     </AppContext.Provider>
   );

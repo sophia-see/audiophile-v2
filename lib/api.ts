@@ -55,6 +55,7 @@ export const fetchHomePageProductById = async (id: number) => {
 };
 
 export const fetchProductById = async (id: number) => {
+  console.log({hereId: id})
   try {
     const product = await prisma.product.findUnique({
       where: {
@@ -65,6 +66,8 @@ export const fetchProductById = async (id: number) => {
         inclusions: true, // Include related inclusions
       },
     });
+
+    console.log({product})
 
     return product as ProductDBType;
   } catch (error) {

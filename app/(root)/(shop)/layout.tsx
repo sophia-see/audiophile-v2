@@ -1,5 +1,5 @@
 import BackdropBlur from '@/components/shared/BackdropBlur'
-import Header from '@/components/shared/Header'
+import Header from '@/components/shared/Header/Header'
 import dynamic from 'next/dynamic'
 
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
