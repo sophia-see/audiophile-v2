@@ -15,18 +15,29 @@ interface CartState {
   clearCart: () => void
   total: number
   quantity: number
+  lastUpdated: number | undefined
 }
 
 const useCartStore = create<CartState>((set, get) => ({
   items: [],
   quantity: 0,
   total: 0,
+  lastUpdated: undefined,
   setItems: (items) => {
     const total = items.reduce((acc, i) => acc + (i.price * i.quantity), 0);
-    localStorage.setItem('cart', JSON.stringify(items))
-    set({ items, total, quantity: items.length })
+
+    const lastUpdated = Date.now();
+
+    const cart = {
+      items: items,
+      lastUpdated: lastUpdated
+    }
+    localStorage.setItem('cartItems', JSON.stringify(cart))
+
+    set({ items, total, quantity: items.length, lastUpdated })
   },
   addItem: (item) => {
+    const lastUpdated = Date.now();
     const items = get().items
     const existing = items.find((i) => i.id === item.id);
 
@@ -48,20 +59,39 @@ const useCartStore = create<CartState>((set, get) => ({
     }
 
     const newTotal = updatedItems.reduce((acc, i) => acc + (i.price * i.quantity), 0);
-    localStorage.setItem('cartItems', JSON.stringify(updatedItems))
-    set({ items: updatedItems, total: newTotal, quantity: updatedItems.length })
+
+    const cart = {
+      items: updatedItems,
+      lastUpdated: lastUpdated
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cart))
+    set({ items: updatedItems, total: newTotal, quantity: updatedItems.length, lastUpdated })
   },
   removeItem: (id) => {
+    const lastUpdated = Date.now();
+
     const updatedItems =  get().items.filter((i) => i.id !== id);
     const newTotal = updatedItems.reduce((acc, i) => acc + (i.price * i.quantity), 0);
 
-    set({ items: updatedItems, total: newTotal, quantity: updatedItems.length })
-    localStorage.setItem('cartItems', JSON.stringify(updatedItems))
-  },
+    set({ items: updatedItems, total: newTotal, quantity: updatedItems.length, lastUpdated });
+
+    const cart = {
+      items: updatedItems,
+      lastUpdated: lastUpdated
+    }
+    
+    localStorage.setItem('cartItems', JSON.stringify(cart))  },
   clearCart: () => {
-    set({ items: [], total: 0, quantity: 0})
-    localStorage.setItem('cartItems', JSON.stringify([]))
-  },
+    const lastUpdated = Date.now();
+
+    set({ items: [], total: 0, quantity: 0, lastUpdated })
+    const cart = {
+      items: [],
+      lastUpdated: lastUpdated
+    }
+    
+    localStorage.setItem('cartItems', JSON.stringify(cart))  },
 }))
 
 export default useCartStore

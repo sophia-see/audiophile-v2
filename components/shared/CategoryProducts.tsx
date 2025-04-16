@@ -1,5 +1,5 @@
 import Products from '@/components/shared/Products/Products';
-import { CategoryType, fetchProducts } from '@/lib/api';
+import { CategoryType, fetchProducts } from '@/lib/api/product';
 import { toProductData } from '@/lib/utils';
 
 interface CategoryPageProps {

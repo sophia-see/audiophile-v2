@@ -1,4 +1,4 @@
-import { fetchProductById } from "@/lib/api";
+import { fetchProductById } from "@/lib/api/product";
 import { NextResponse } from "next/server";
 
 interface ParamsProps {
@@ -6,7 +6,6 @@ interface ParamsProps {
 }
 
 export async function GET(req: Request, { params }: ParamsProps) {
-  console.log("im here: ", params)
   const { id } = await params;
   const productId = parseInt(id);
 

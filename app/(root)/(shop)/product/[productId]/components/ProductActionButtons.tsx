@@ -31,7 +31,7 @@ export default function ProductActionButtons({id, title, price}: ProductActionBu
         id: id,
         name: title,
         price: price,
-        quantity: value
+        quantity: value,
       });
       toast.success(`Added ${value}x ${title} to your cart`, {
         icon: <CircleCheck className='text-brown' size={14}/>,

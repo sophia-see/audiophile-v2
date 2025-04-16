@@ -1,4 +1,4 @@
-import prisma from "./prisma";
+import prisma from "../prisma";
 
 export enum CategoryType {
   headphones = "headphones",
@@ -55,7 +55,6 @@ export const fetchHomePageProductById = async (id: number) => {
 };
 
 export const fetchProductById = async (id: number) => {
-  console.log({hereId: id})
   try {
     const product = await prisma.product.findUnique({
       where: {
@@ -67,7 +66,6 @@ export const fetchProductById = async (id: number) => {
       },
     });
 
-    console.log({product})
 
     return product as ProductDBType;
   } catch (error) {

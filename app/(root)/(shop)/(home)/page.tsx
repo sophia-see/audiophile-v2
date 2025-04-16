@@ -1,5 +1,5 @@
 import Hero from "./components/Hero";
-import { fetchHomePageProductById } from "@/lib/api";
+import { fetchHomePageProductById } from "@/lib/api/product";
 import { toProductData } from "@/lib/utils";
 import dynamic from "next/dynamic";
 

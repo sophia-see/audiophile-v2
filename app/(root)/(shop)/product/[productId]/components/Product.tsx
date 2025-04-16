@@ -1,4 +1,4 @@
-import { fetchProductById } from '@/lib/api';
+import { fetchProductById } from '@/lib/api/product';
 import ProductDetails from './ProductDetails';
 import NoDataFound from '@/components/shared/NoDataFound';
 

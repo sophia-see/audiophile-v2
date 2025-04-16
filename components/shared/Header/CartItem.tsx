@@ -38,7 +38,7 @@ export default function CartItem ({id, quantity}: CartItemProps) {
         id: id,
         name: title!,
         price: price!,
-        quantity: debouncedValue
+        quantity: debouncedValue,
       });
       toast.success(`Added ${debouncedValue}x ${title} to your cart`, {
         icon: <CircleCheck className='text-brown' size={14} />,

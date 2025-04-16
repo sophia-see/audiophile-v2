@@ -3,7 +3,7 @@
 import useDeviceSize from '@/hooks/use-device-size';
 import ItemCard from './ItemCard';
 import { useProductsByCategory } from '@/hooks/useProducts';
-import { CategoryType } from '@/lib/api';
+import { CategoryType } from '@/lib/api/product';
 import NoDataFound from '../NoDataFound';
 import ProductsSkeleton from './ProductsSkeleton';
 

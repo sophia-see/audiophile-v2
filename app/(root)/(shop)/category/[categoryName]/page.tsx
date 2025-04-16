@@ -1,7 +1,7 @@
 import Title from '@/components/shared/Title'
 import{ Suspense } from 'react'
 import dynamic from 'next/dynamic';
-import { CategoryType } from '@/lib/api';
+import { CategoryType } from '@/lib/api/product';
 import CategoryProducts from '@/components/shared/CategoryProducts';
 import ProductsSkeleton from '@/components/shared/Products/ProductsSkeleton';
 import { toTitleCase } from '@/lib/utils';

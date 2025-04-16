@@ -9,8 +9,10 @@ export default function CartProvider({children}: {children: React.ReactNode}) {
   useEffect(() => {
     const storedItems = localStorage.getItem("cartItems");
 
-    if (storedItems) {
-      setItems(JSON.parse(storedItems));
+    if (storedItems) { 
+      const cart = JSON.parse(storedItems);
+      console.log({cart})
+      setItems(cart.items);
     }
   }, [setItems])
 

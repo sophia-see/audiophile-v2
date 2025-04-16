@@ -1,4 +1,4 @@
-import { fetchRandomProductsExceptId } from '@/lib/api';
+import { fetchRandomProductsExceptId } from '@/lib/api/product';
 import SuggestedProducts from './SuggestedProducts';
 import { toProductData } from '@/lib/utils';
 

@@ -1,4 +1,4 @@
-import { CategoryType, fetchProducts } from "@/lib/api";
+import { CategoryType, fetchProducts } from "@/lib/api/product";
 import { clientFetchProductById } from "@/lib/client-api";
 import { useQuery } from "@tanstack/react-query";
 
@@ -23,8 +23,6 @@ export function useProductById(id: number, initialData?: ProductType) {
     staleTime: 1000 * 60 * 5,
     enabled:  id !== undefined && id !== null
   });
-
-  console.log({ result })
 
   return result;
 }

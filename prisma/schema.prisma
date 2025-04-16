@@ -19,6 +19,8 @@ model User {
   email String  @unique
   firstName  String
   lastName  String
+
+  cart Cart?
 }
 
 model Product {
@@ -57,3 +59,19 @@ model ImageSet {
   gallery   String[]
 }
 
+model Cart {
+  id          String       @id @default(uuid()) @map("_id")
+  userId      String       @unique
+  user        User         @relation(fields: [userId], references: [id])
+  items       CartItem[]
+  lastUpdated Int
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  cartId    String
+  cart      Cart     @relation(fields: [cartId], references: [id])
+  productId Int
+  quantity  Int
+  price     Float
+}
