@@ -62,7 +62,7 @@ export default function CartItem ({id, quantity}: CartItemProps) {
     }
   }, [debouncedValue, handleAddToCart, quantity]);
 
-  if (isLoading) return <LoadingCircleSpinner />;
+  if (isLoading) return <LoadingCircleSpinner size="small"/>;
   if (!formattedProduct) return <NoDataFound />;
 
   return (

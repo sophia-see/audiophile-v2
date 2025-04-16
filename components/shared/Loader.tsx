@@ -2,10 +2,18 @@
 
 import { motion } from "framer-motion"
 
-function LoadingCircleSpinner() {
+interface LoadingCircleSpinnerProps {
+    size?: "default" | "small" | "large"
+}
+
+function LoadingCircleSpinner({ size = "default" }: LoadingCircleSpinnerProps) {
+    const isSmall = size === "small";
+    const isLarge = size === "large";
+
     return (
         <div className="container">
             <motion.div
+                style={{ scale: isSmall ? 0.5 : isLarge ? 1.5 : 1 }}
                 className="spinner"
                 animate={{ rotate: 360 }}
                 transition={{
@@ -30,7 +38,6 @@ function StyleSheet() {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 40px;
                 border-radius: 8px;
             }
 
