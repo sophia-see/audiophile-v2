@@ -50,8 +50,8 @@ export default function ProductActionButtons({id, title, price}: ProductActionBu
       <NumberPicker value={value} setValue={setValue} className='w-[120px]' min={cartItem ? 0 : 1}/>
       <Button
         onClick={handleAddToCart}
-        className='min-w-[160px] w-fit justify-center disabled:opacity-70'
-        disabled={value === undefined || value === null || value < 0}
+        className={`min-w-[160px] w-fit justify-center disabled:opacity-70 disabled:cursor-not-allowed`}
+        disabled={value === undefined || value === null || value < 0 || cartItem?.quantity == value}
       >
         {cartItem ? (value ? "Update cart" : value == 0 ? "Remove from cart" : "Update cart") : "Add to cart"}
       </Button>
