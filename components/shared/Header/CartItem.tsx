@@ -78,7 +78,7 @@ export default function CartItem ({id, quantity}: CartItemProps) {
         </div>
         <div className="flex flex-col">
           <Link href={toProductUrl(parseInt(id), title)}>
-            <div className="font-bold text-[15px] leading-[25px]">
+            <div className="font-bold text-[15px] leading-[25px] hover:text-brown transition duration-200">
               {title}
             </div>
           </Link>

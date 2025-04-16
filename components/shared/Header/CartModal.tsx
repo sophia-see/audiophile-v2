@@ -31,7 +31,7 @@ export default function CartModal({isCartOpen}: CartModalProps) {
             >
               <div className='flex justify-between items-center'>
                 <div className='font-bold text-[18px] tracking-[1.29px] uppercase'>Cart ({quantity})</div>
-                <div className='underline text-black/50 font-medium text-[15px] leading-[25px] cursor-pointer' onClick={clearCart}>Remove all</div>
+                <div className='underline text-black/50 font-medium text-[15px] leading-[25px] cursor-pointer hover:text-brown transition duration-200' onClick={clearCart}>Remove all</div>
               </div>
               {items.map((item) => <CartItem key={item.id} id={item.id} quantity={item.quantity} />)}
               <div className='flex justify-between items-center'>
