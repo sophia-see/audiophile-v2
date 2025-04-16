@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import useCartStore from "@/stores/useCartStore";
 import CartItem from "./CartItem";
+import Button from "../Button";
 
 interface CartModalProps {
   isCartOpen: boolean;
@@ -9,7 +10,7 @@ interface CartModalProps {
 
 
 export default function CartModal({isCartOpen}: CartModalProps) {
-  const { quantity, items, clearCart } = useCartStore();
+  const { quantity, items, clearCart, total } = useCartStore();
   return (
     <AnimatePresence>
       {isCartOpen && (
@@ -33,6 +34,11 @@ export default function CartModal({isCartOpen}: CartModalProps) {
                 <div className='underline text-black/50 font-medium text-[15px] leading-[25px] cursor-pointer' onClick={clearCart}>Remove all</div>
               </div>
               {items.map((item) => <CartItem key={item.id} id={item.id} quantity={item.quantity} />)}
+              <div className='flex justify-between items-center'>
+                <div className='font-medium text-[15px] leading-[25px] uppercase opacity-50'>Total</div>
+                <div className='font-bold text-[18px] uppercase'>$ {total.toLocaleString()}</div>
+              </div>
+              <Button className="justify-center">Checkout</Button>
             </div>
           </motion.div>
         </>
